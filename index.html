@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fcj - Logística y Fletes en México</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      window.FontAwesomeConfig = { autoReplaceSvg: "nest" };
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#0A1931",
+              "deep-blue": "#182C4E",
+              "accent-orange": "#FF7A00",
+              "accent-yellow": "#FFC107",
+              "light-gray": "#F7F9FB",
+              "medium-gray": "#E0E0E0",
+              "dark-gray": "#6B7280",
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Mobile Menu Animations */
+      #mobile-menu {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      #menu-icon {
+        transition: all 0.3s ease-in-out;
+      }
+
+      /* Smooth scrolling for anchor links */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Prevent body scroll when menu is open */
+      body.menu-open {
+        overflow: hidden;
+        height: 100vh;
+        position: relative;
+      }
+
+      /* Ensure mobile menu is visible */
+      body.menu-open #mobile-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background-color: #0a1931 !important;
+        opacity: 1 !important;
+        z-index: 9999 !important;
+      }
+
+      /* Force solid background for mobile menu */
+      #mobile-menu {
+        background-color: #0a1931 !important;
+        opacity: 1 !important;
+      }
+    </style>
+  </head>
+  <body class="bg-white font-poppins">
+    <header
+      id="header"
+      class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-md"
+    >
+      <div class="container mx-auto px-6 py-3">
+        <div class="flex items-center justify-between">
+          <span class="text-2xl font-bold text-navy cursor-pointer">
+            <i class="fa-solid fa-truck-fast text-accent-orange mr-2"></i>Fcj
+          </span>
+          <nav class="hidden md:flex items-center space-x-6 text-navy">
+            <span
+              class="hover:text-accent-orange transition-colors cursor-pointer"
+            >
+              <a href="#nosotros"> Nosotros </a>
+            </span>
+            <a href="#servicios">
+              <span
+                class="hover:text-accent-orange transition-colors cursor-pointer"
+                >Servicios</span
+              >
+            </a>
+            <span
+              class="hover:text-accent-orange transition-colors cursor-pointer"
+            >
+              <a href="#cobertura">Cobertura</a>
+            </span>
+
+            <span
+              class="hover:text-accent-orange transition-colors cursor-pointer"
+            >
+              <a href="#flotilla"> Flotilla </a>
+            </span>
+
+            <span
+              class="hover:text-accent-orange transition-colors cursor-pointer"
+            >
+              <a href="#equipo"> Contacto </a>
+            </span>
+          </nav>
+          <span
+            class="hidden md:inline-block bg-accent-orange text-white font-semibold py-2 px-5 rounded-lg hover:bg-orange-600 transition-all shadow-lg cursor-pointer"
+          >
+            <a href="#equipo"> Cotiza tu envío </a>
+          </span>
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-navy relative z-50"
+          >
+            <i
+              id="menu-icon"
+              class="fa-solid fa-bars text-2xl transition-transform"
+            ></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="fixed inset-0 z-50 transform -translate-y-full transition-transform duration-300 ease-in-out hidden md:hidden"
+        style="background-color: #0a1931 !important; opacity: 1 !important"
+      >
+        <!-- Close Button -->
+        <button
+          id="mobile-menu-close"
+          class="absolute top-6 right-6 text-white hover:text-accent-orange transition-colors z-50"
+        >
+          <i class="fa-solid fa-xmark text-3xl"></i>
+        </button>
+
+        <div
+          class="flex flex-col items-center justify-center h-full space-y-8 text-white"
+        >
+          <span
+            class="hover:text-accent-orange transition-colors cursor-pointer text-xl font-medium"
+          >
+            <a href="#nosotros"> Nosotros </a>
+          </span>
+          <a href="#servicios">
+            <span
+              class="hover:text-accent-orange transition-colors cursor-pointer text-xl font-medium"
+              >Servicios</span
+            >
+          </a>
+          <a href="#cobertura">
+            <span
+              class="hover:text-accent-orange transition-colors cursor-pointer text-xl font-medium"
+              >Cobertura</span
+            >
+          </a>
+          <span
+            class="hover:text-accent-orange transition-colors cursor-pointer text-xl font-medium"
+          >
+            <a href="#flotilla"> Flotilla </a>
+          </span>
+          <span
+            class="hover:text-accent-orange transition-colors cursor-pointer text-xl font-medium"
+          >
+            <a href="#equipo"> Contacto </a>
+          </span>
+          <div class="mt-8">
+            <span
+              class="bg-accent-orange text-white font-semibold py-3 px-8 rounded-lg hover:bg-orange-600 transition-all shadow-lg cursor-pointer text-lg"
+            >
+              <a href="#equipo"> Cotiza tu envío </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section
+        id="inicio"
+        class="relative bg-navy text-white h-[800px] flex items-center pt-16"
+      >
+        <div class="absolute inset-0 z-0">
+          <img
+            class="w-full h-full object-cover opacity-30"
+            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/9b0e485119-323331687078d28d9272.png"
+            alt="A modern logistics truck on a highway at dusk, cinematic lighting, high-speed motion blur, technological feel, digital art"
+          />
+        </div>
+        <div
+          class="container mx-auto px-6 relative z-10 text-center md:text-left"
+        >
+          <div class="max-w-3xl">
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
+              Movemos tu carga con
+              <span class="text-accent-orange">seguridad, puntualidad</span> y
+              confianza.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-8">
+              Fletes locales y foráneos con monitoreo 24/7 y operadores
+              certificados.
+            </p>
+            <div
+              class="flex flex-col md:flex-row gap-4 justify-center md:justify-start"
+            >
+              <span
+                class="bg-accent-orange text-white font-semibold py-3 px-8 rounded-lg hover:bg-orange-600 transition-all text-lg cursor-pointer"
+              >
+                <a href="#equipo"> Solicitar cotización </a>
+              </span>
+              <span
+                class="bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white hover:text-navy transition-all text-lg cursor-pointer"
+              >
+                <a href="#servicios">Conoce nuestros servicios</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="nosotros" class="py-20 bg-light-gray">
+        <div class="container mx-auto px-6">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span class="text-accent-orange font-semibold"
+                >Quiénes Somos</span
+              >
+              <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-6">
+                Su socio estratégico en logística terrestre
+              </h2>
+              <p class="text-dark-gray mb-4">
+                Con más de 15 años de experiencia, Fcj se ha consolidado como un
+                referente en el transporte de carga en México. Nuestra misión es
+                ofrecer soluciones logísticas seguras, puntuales y eficientes,
+                adaptadas a las necesidades de cada cliente.
+              </p>
+              <p class="text-dark-gray mb-6">
+                Nuestra visión es ser líderes nacionales en transporte terrestre
+                con un enfoque tecnológico y sustentable, impulsando el
+                crecimiento de nuestros socios comerciales a través de un
+                servicio de excelencia.
+              </p>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-navy">
+                <div class="flex items-center">
+                  <i
+                    class="fa-solid fa-check-circle text-accent-orange mr-2"
+                  ></i
+                  >Compromiso
+                </div>
+                <div class="flex items-center">
+                  <i
+                    class="fa-solid fa-check-circle text-accent-orange mr-2"
+                  ></i
+                  >Honestidad
+                </div>
+                <div class="flex items-center">
+                  <i
+                    class="fa-solid fa-check-circle text-accent-orange mr-2"
+                  ></i
+                  >Seguridad
+                </div>
+                <div class="flex items-center">
+                  <i
+                    class="fa-solid fa-check-circle text-accent-orange mr-2"
+                  ></i
+                  >Innovación
+                </div>
+                <div class="flex items-center">
+                  <i
+                    class="fa-solid fa-check-circle text-accent-orange mr-2"
+                  ></i
+                  >Puntualidad
+                </div>
+                <div class="flex items-center">
+                  <i
+                    class="fa-solid fa-check-circle text-accent-orange mr-2"
+                  ></i
+                  >Servicio
+                </div>
+              </div>
+            </div>
+            <div class="relative h-96">
+              <img
+                class="w-full h-full object-cover rounded-xl shadow-2xl"
+                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3a4bb792ba-2923cdecf9d21e4c66be.png"
+                alt="A professional and diverse team of logistics coordinators working in a modern office with maps and screens in the background, candid shot"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="servicios" class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+          <span class="text-accent-orange font-semibold"
+            >Soluciones Logísticas</span
+          >
+          <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-12">
+            Nuestros Servicios
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div
+              id="service-card-1"
+              class="bg-light-gray p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all text-left"
+            >
+              <i
+                class="fa-solid fa-warehouse text-4xl text-accent-orange mb-4"
+              ></i>
+              <h3 class="text-xl font-bold text-navy mb-2">Entrega en CEDIS</h3>
+              <p class="text-dark-gray mb-4 text-sm">
+                Optimizamos la entrega en Centros de Distribución para agilizar
+                su cadena de suministro.
+              </p>
+              <!-- <span
+                class="font-semibold text-accent-orange hover:text-orange-600 cursor-pointer"
+                >Más información <i class="fa-solid fa-arrow-right ml-1"></i
+              ></span> -->
+            </div>
+            <div
+              id="service-card-2"
+              class="bg-light-gray p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all text-left"
+            >
+              <i
+                class="fa-solid fa-right-left text-4xl text-accent-orange mb-4"
+              ></i>
+              <h3 class="text-xl font-bold text-navy mb-2">Interbodegas</h3>
+              <p class="text-dark-gray mb-4 text-sm">
+                Movimiento eficiente y seguro de mercancía entre sus almacenes y
+                bodegas.
+              </p>
+              <!-- <span
+                class="font-semibold text-accent-orange hover:text-orange-600 cursor-pointer"
+                >Más información <i class="fa-solid fa-arrow-right ml-1"></i
+              ></span> -->
+            </div>
+            <div
+              id="service-card-3"
+              class="bg-light-gray p-8 rounded-xl shadow-2xl hover:-translate-y-2 transition-all text-left"
+            >
+              <i
+                class="fa-solid fa-user-tie text-accent-orange text-4xl mb-4"
+              ></i>
+              <h3 class="text-xl font-bold mb-2">Servicio Dedicado</h3>
+              <p class="text-dark-gray mb-4 text-sm">
+                Unidades y operadores exclusivos para sus rutas, garantizando
+                máxima disponibilidad.
+              </p>
+              <!-- <span
+                class="font-semibold text-accent-orange hover:text-gray-200 cursor-pointer"
+                >Más información <i class="fa-solid fa-arrow-right ml-1"></i
+              ></span> -->
+            </div>
+            <div
+              id="service-card-4"
+              class="bg-light-gray p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all text-left"
+            >
+              <i
+                class="fa-solid fa-boxes-packing text-4xl text-accent-orange mb-4"
+              ></i>
+              <h3 class="text-xl font-bold text-navy mb-2">
+                Servicio Consolidado
+              </h3>
+              <p class="text-dark-gray mb-4 text-sm">
+                Reduzca costos compartiendo espacio en nuestras unidades para
+                envíos pequeños.
+              </p>
+              <!-- <span
+                class="font-semibold text-accent-orange hover:text-orange-600 cursor-pointer"
+                >Más información <i class="fa-solid fa-arrow-right ml-1"></i
+              ></span> -->
+            </div>
+            <div
+              id="service-card-5"
+              class="bg-light-gray p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all text-left"
+            >
+              <i class="fa-solid fa-road text-4xl text-accent-orange mb-4"></i>
+              <h3 class="text-xl font-bold text-navy mb-2">Viajes Foráneos</h3>
+              <p class="text-dark-gray mb-4 text-sm">
+                Cobertura nacional para llevar su carga a cualquier destino de
+                la República.
+              </p>
+              <!-- <span
+                class="font-semibold text-accent-orange hover:text-orange-600 cursor-pointer"
+                >Más información <i class="fa-solid fa-arrow-right ml-1"></i
+              ></span> -->
+            </div>
+            <div
+              id="service-card-6"
+              class="bg-light-gray p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all text-left"
+            >
+              <i
+                class="fa-solid fa-door-open text-4xl text-accent-orange mb-4"
+              ></i>
+              <h3 class="text-xl font-bold text-navy mb-2">Door to Door</h3>
+              <p class="text-dark-gray mb-4 text-sm">
+                Nos encargamos de la recolección y entrega en el domicilio que
+                usted nos indique.
+              </p>
+              <!-- <span
+                class="font-semibold text-accent-orange hover:text-orange-600 cursor-pointer"
+                >Más información <i class="fa-solid fa-arrow-right ml-1"></i
+              ></span> -->
+            </div>
+            <div
+              id="service-card-7"
+              class="bg-light-gray p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all text-left"
+            >
+              <i
+                class="fa-solid fa-container-storage text-4xl text-accent-orange mb-4"
+              ></i>
+              <h3 class="text-xl font-bold text-navy mb-2">
+                Transporte de Contenedores
+              </h3>
+              <p class="text-dark-gray mb-4 text-sm">
+                Servicio especializado para el movimiento de contenedores desde
+                y hacia puertos.
+              </p>
+              <!-- <span
+                class="font-semibold text-accent-orange hover:text-orange-600 cursor-pointer"
+                >Más información <i class="fa-solid fa-arrow-right ml-1"></i
+              ></span> -->
+            </div>
+            <div
+              id="service-card-8"
+              class="bg-light-gray p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all text-left"
+            >
+              <i class="fa-solid fa-bolt text-4xl text-accent-orange mb-4"></i>
+              <h3 class="text-xl font-bold text-navy mb-2">Servicio Express</h3>
+              <p class="text-dark-gray mb-4 text-sm">
+                Entregas urgentes con tiempos garantizados para envíos críticos.
+              </p>
+              <!-- <span
+                class="font-semibold text-accent-orange hover:text-orange-600 cursor-pointer"
+                >Más información <i class="fa-solid fa-arrow-right ml-1"></i
+              ></span> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ventajas" class="py-20 bg-deep-blue text-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center">
+            <span class="text-accent-yellow font-semibold"
+              >Tecnología y Seguridad</span
+            >
+            <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-12">
+              Ventajas que marcan la diferencia
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div id="advantage-1" class="text-center p-6">
+              <i
+                class="fa-solid fa-satellite-dish text-5xl text-accent-yellow mb-4"
+              ></i>
+              <h3 class="text-xl font-bold mb-2">Monitoreo 24/7</h3>
+              <p class="text-gray-300">
+                Vigilancia constante de su carga a través de nuestro centro de
+                monitoreo.
+              </p>
+            </div>
+            <div id="advantage-2" class="text-center p-6">
+              <i
+                class="fa-solid fa-map-location-dot text-5xl text-accent-yellow mb-4"
+              ></i>
+              <h3 class="text-xl font-bold mb-2">
+                Geolocalización en Tiempo Real
+              </h3>
+              <p class="text-gray-300">
+                Acceso a la ubicación exacta de su envío en todo momento vía
+                GPS.
+              </p>
+            </div>
+            <div id="advantage-3" class="text-center p-6">
+              <i
+                class="fa-solid fa-user-shield text-5xl text-accent-yellow mb-4"
+              ></i>
+              <h3 class="text-xl font-bold mb-2">Operadores Certificados</h3>
+              <p class="text-gray-300">
+                Conductores profesionales con capacitación y pruebas de
+                confianza.
+              </p>
+            </div>
+            <div id="advantage-4" class="text-center p-6">
+              <i
+                class="fa-solid fa-shield-halved text-5xl text-accent-yellow mb-4"
+              ></i>
+              <h3 class="text-xl font-bold mb-2">Protocolos de Seguridad</h3>
+              <p class="text-gray-300">
+                Estrictos procedimientos para la protección de la mercancía y la
+                unidad.
+              </p>
+            </div>
+            <div id="advantage-5" class="text-center p-6">
+              <i
+                class="fa-solid fa-headset text-5xl text-accent-yellow mb-4"
+              ></i>
+              <h3 class="text-xl font-bold mb-2">Asistencia Vial 24/7</h3>
+              <p class="text-gray-300">
+                Soporte inmediato en carretera para resolver cualquier
+                imprevisto.
+              </p>
+            </div>
+            <div id="advantage-6" class="text-center p-6">
+              <i
+                class="fa-solid fa-truck-shield text-5xl text-accent-yellow mb-4"
+              ></i>
+              <h3 class="text-xl font-bold mb-2">Unidades Modernas</h3>
+              <p class="text-gray-300">
+                Flota con tecnología de punta y aditamentos de seguridad
+                avanzados.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="flotilla" class="py-20 bg-light-gray">
+        <div class="container mx-auto px-6">
+          <div class="text-center">
+            <span class="text-accent-orange font-semibold">Nuestra Flota</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-12">
+              Unidades para cada necesidad
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              id="fleet-card-1"
+              class="bg-white rounded-lg shadow-md overflow-hidden"
+            >
+              <img
+                class="w-full h-48 object-cover"
+                src="/public/images/unatonelada.webp"
+                alt="A clean white 1.5 ton pickup truck for logistics, studio shot, side view"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-navy">Camionetas 1.5 Ton</h3>
+                <p class="text-dark-gray mt-2">
+                  Ideales para paquetería y entregas de última milla.
+                </p>
+              </div>
+            </div>
+            <div
+              id="fleet-card-2"
+              class="bg-white rounded-lg shadow-md overflow-hidden"
+            >
+              <img
+                class="w-full h-48 object-cover"
+                src="/public/images/trestoneladas.webp"
+                alt="A modern 3.5 ton light-duty truck with a closed box, side profile, clean design"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-navy">Camiones 3.5 Ton</h3>
+                <p class="text-dark-gray mt-2">
+                  Versátiles para carga media en rutas locales y regionales.
+                </p>
+              </div>
+            </div>
+            <div
+              id="fleet-card-3"
+              class="bg-white rounded-lg shadow-md overflow-hidden"
+            >
+              <img
+                class="w-full h-48 object-cover"
+                src="/public/images/torton.webp"
+                alt="A heavy-duty Torton truck with three axles, side profile, on a clean background"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-navy">Torton</h3>
+                <p class="text-dark-gray mt-2">
+                  Gran capacidad para mercancía voluminosa y pesada.
+                </p>
+              </div>
+            </div>
+            <div
+              id="fleet-card-4"
+              class="bg-white rounded-lg shadow-md overflow-hidden"
+            >
+              <img
+                class="w-full h-48 object-cover"
+                src="/public/images/rabon.webp"
+                alt="A powerful Rabon truck with two rear axles, studio shot, ready for hauling"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-navy">Rabón</h3>
+                <p class="text-dark-gray mt-2">
+                  Excelente para distribución en ciudades con difícil acceso.
+                </p>
+              </div>
+            </div>
+            <div
+              id="fleet-card-5"
+              class="bg-white rounded-lg shadow-md overflow-hidden"
+            >
+              <img
+                class="w-full h-48 object-cover"
+                src="/public/images/caja.jpg"
+                alt="A massive 53-foot semi-trailer truck (Full), cinematic shot on a highway"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-navy">Full 53 pies</h3>
+                <p class="text-dark-gray mt-2">
+                  Máxima capacidad para viajes largos y transporte masivo.
+                </p>
+              </div>
+            </div>
+            <div
+              id="fleet-card-6"
+              class="bg-white rounded-lg shadow-md overflow-hidden"
+            >
+              <img
+                class="w-full h-48 object-cover"
+                src="/public/images/contenedor.png"
+                alt="A specialized container chassis truck, side view, at a port"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-navy">Porta Contenedores</h3>
+                <p class="text-dark-gray mt-2">Diseñ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="equipo" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16">
+            <span class="text-accent-orange font-semibold">Nuestro Equipo</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">
+              Profesionales comprometidos con la excelencia
+            </h2>
+            <p class="text-dark-gray max-w-2xl mx-auto">
+              Contamos con un equipo altamente capacitado y experimentado que
+              garantiza la calidad y seguridad en cada envío.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16"
+          >
+            <div id="team-member-1" class="text-center group">
+              <div class="relative mb-6">
+                <img
+                  class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-accent-orange/20 group-hover:border-accent-orange transition-all"
+                  src="/public/images/arturo.jpg"
+                  alt="Director General"
+                />
+                <div
+                  class="absolute inset-0 rounded-full bg-accent-orange/10 group-hover:bg-accent-orange/20 transition-all"
+                ></div>
+              </div>
+              <h3 class="text-xl font-bold text-navy mb-1">Arturo Cruz</h3>
+              <p class="text-accent-orange font-semibold mb-2">
+                Gerente de Logística
+              </p>
+              <p class="text-dark-gray text-sm">
+                +10 años de experiencia en la industria logística.
+              </p>
+            </div>
+
+            <div id="team-member-2" class="text-center group">
+              <div class="relative mb-6">
+                <img
+                  class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-accent-orange/20 group-hover:border-accent-orange transition-all"
+                  src="/public/images/francisco.jpg"
+                  alt="Directora de Operaciones"
+                />
+                <div
+                  class="absolute inset-0 rounded-full bg-accent-orange/10 group-hover:bg-accent-orange/20 transition-all"
+                ></div>
+              </div>
+              <h3 class="text-xl font-bold text-navy mb-1">Francisco Cruz</h3>
+              <p class="text-accent-orange font-semibold mb-2">
+                Gerente de Operaciones
+              </p>
+              <p class="text-dark-gray text-sm">
+                Especialista en optimización de rutas y procesos logísticos.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-light-gray rounded-2xl p-8 md:p-12">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 class="text-2xl font-bold text-navy mb-4">
+                  ¿Por qué confiar en nosotros?
+                </h3>
+                <div class="space-y-4">
+                  <div class="flex items-center">
+                    <i
+                      class="fa-solid fa-graduation-cap text-accent-orange text-xl mr-4"
+                    ></i>
+                    <span class="text-dark-gray"
+                      >Personal altamente capacitado y certificado</span
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <i
+                      class="fa-solid fa-award text-accent-orange text-xl mr-4"
+                    ></i>
+                    <span class="text-dark-gray"
+                      >Más de 15 años de experiencia en el sector</span
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <i
+                      class="fa-solid fa-handshake text-accent-orange text-xl mr-4"
+                    ></i>
+                    <span class="text-dark-gray"
+                      >Compromiso total con la satisfacción del cliente</span
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <i
+                      class="fa-solid fa-chart-line text-accent-orange text-xl mr-4"
+                    ></i>
+                    <span class="text-dark-gray"
+                      >Mejora continua en nuestros procesos</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="bg-accent-orange text-white rounded-xl p-8">
+                  <i class="fa-solid fa-users text-4xl mb-4"></i>
+                  <h4 class="text-2xl font-bold mb-2">+1000</h4>
+                  <p class="text-lg">Viajes realizados</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cobertura" class="py-20 bg-deep-blue text-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12">
+            <span class="text-accent-yellow font-semibold"
+              >Alcance Nacional</span
+            >
+            <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">
+              Cobertura en toda la República
+            </h2>
+            <p class="text-gray-300 max-w-2xl mx-auto">
+              Desde nuestra base en Querétaro, llegamos a todos los rincones de
+              México con la misma calidad y puntualidad.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <img
+                class="w-full h-96 object-contain rounded-xl"
+                src="https://upload.wikimedia.org/wikipedia/commons/2/23/Mexico_Map.svg"
+                alt="Mexico map with highlighted logistics routes and major cities marked, modern infographic style"
+              />
+            </div>
+            <div class="space-y-6">
+              <div class="flex items-center">
+                <i
+                  class="fa-solid fa-map-pin text-accent-yellow text-2xl mr-4"
+                ></i>
+                <div>
+                  <h3 class="text-xl font-bold">Base Central</h3>
+                  <p class="text-gray-300">
+                    Querétaro - Centro estratégico del país
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <i
+                  class="fa-solid fa-truck text-accent-yellow text-2xl mr-4"
+                ></i>
+                <div>
+                  <h3 class="text-xl font-bold">32 Estados</h3>
+                  <p class="text-gray-300">
+                    Cobertura completa en toda la República Mexicana
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <i
+                  class="fa-solid fa-clock text-accent-yellow text-2xl mr-4"
+                ></i>
+                <div>
+                  <h3 class="text-xl font-bold">Tiempos Garantizados</h3>
+                  <p class="text-gray-300">
+                    Entregas puntuales según ruta y servicio
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonios" class="py-20 bg-light-gray">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12">
+            <span class="text-accent-orange font-semibold"
+              >Opiniones de Clientes</span
+            >
+            <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">
+              Confía en nosotros, confía en la experiencia
+            </h2>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-accent-orange/20 flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-user text-accent-orange text-xl"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-bold text-navy">María González</h3>
+                  <p class="text-accent-orange">Cliente desde 2021</p>
+                </div>
+              </div>
+              <p class="text-dark-gray mb-4">
+                "TransLogix ha sido nuestra solución logística ideal. La
+                puntualidad, la comunicación y el cuidado de cada envío son
+                excelentes. Recomiendo encarecidamente a todos los que necesiten
+                un servicio confiable y profesional."
+              </p>
+              <div class="flex items-center">
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-accent-orange/20 flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-user text-accent-orange text-xl"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-bold text-navy">Carlos Pérez</h3>
+                  <p class="text-accent-orange">Cliente desde 2022</p>
+                </div>
+              </div>
+              <p class="text-dark-gray mb-4">
+                "La cobertura nacional y el servicio dedicado son
+                impresionantes. Nuestro negocio ha crecido gracias a la
+                confiabilidad de TransLogix. El equipo es profesional y siempre
+                atento a nuestras necesidades."
+              </p>
+              <div class="flex items-center">
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-accent-orange/20 flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-user text-accent-orange text-xl"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-bold text-navy">Sofía Martínez</h3>
+                  <p class="text-accent-orange">Cliente desde 2023</p>
+                </div>
+              </div>
+              <p class="text-dark-gray mb-4">
+                "La experiencia con TransLogix ha sido excelente. La atención al
+                cliente, la transparencia y la puntualidad son los puntos
+                fuertes. Recomiendo a todos los que busquen un proveedor de
+                confianza."
+              </p>
+              <div class="flex items-center">
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+                <i class="fa-solid fa-star text-accent-orange"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cta-final" class="py-20 bg-deep-blue text-white">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            ¿Listo para mover tu carga con confianza?
+          </h2>
+          <p class="text-xl text-gray-300 mb-8">
+            Contáctanos hoy y obtén una cotización personalizada. Nuestro equipo
+            está listo para ayudarte.
+          </p>
+          <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="tel:+524427814127">
+              <button
+                class="bg-accent-orange text-white font-semibold py-4 px-8 rounded-lg hover:bg-orange-600 transition-all shadow-lg cursor-pointer"
+              >
+                Llamar al +52 442 781 4127
+              </button>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="bg-navy text-white py-12">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center mb-4">
+              <i
+                class="fa-solid fa-truck-fast text-accent-orange text-2xl mr-2"
+              ></i>
+              <span class="text-2xl font-bold">Fcj</span>
+            </div>
+            <p class="text-gray-300 mb-4">
+              Su socio estratégico en logística terrestre. Movemos su carga con
+              seguridad, puntualidad y confianza por todo México.
+            </p>
+            <div class="flex space-x-4">
+              <a href="https://wa.me/524427814127">
+                <i
+                  class="fa-brands fa-whatsapp text-accent-orange text-xl cursor-pointer hover:text-accent-yellow transition-colors"
+                >
+                </i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-lg mb-4">Navegación</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <span
+                  class="hover:text-accent-orange cursor-pointer transition-colors"
+                >
+                  <a href="#nosotros">Nosotros</a>
+                </span>
+              </li>
+              <li>
+                <span
+                  class="hover:text-accent-orange cursor-pointer transition-colors"
+                >
+                  <a href="#servicios">Servicios</a>
+                </span>
+              </li>
+              <li>
+                <span
+                  class="hover:text-accent-orange cursor-pointer transition-colors"
+                >
+                  <a href="#cobertura">Cobertura</a>
+                </span>
+              </li>
+              <li>
+                <span
+                  class="hover:text-accent-orange cursor-pointer transition-colors"
+                >
+                  <a href="#flotilla">Flotilla</a>
+                </span>
+              </li>
+              <li>
+                <span
+                  class="hover:text-accent-orange cursor-pointer transition-colors"
+                >
+                  <a href="#equipo">Contacto</a>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-lg mb-4">Servicios</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <span
+                  class="hover:text-accent-orange cursor-pointer transition-colors"
+                >
+                  <a href="#servicios">Entrega en CEDIS</a>
+                </span>
+              </li>
+              <li>
+                <span
+                  class="hover:text-accent-orange cursor-pointer transition-colors"
+                >
+                  <a href="#servicios">Servicio Dedicado</a>
+                </span>
+                >
+              </li>
+              <li>
+                <span
+                  class="hover:text-accent-orange cursor-pointer transition-colors"
+                >
+                  <a href="#servicios">Viajes Foráneos</a>
+                </span>
+                >
+              </li>
+              <li>
+                <span
+                  class="hover:text-accent-orange cursor-pointer transition-colors"
+                >
+                  <a href="#servicios">Door to Door</a>
+                </span>
+                >
+              </li>
+              <li>
+                <span
+                  class="hover:text-accent-orange cursor-pointer transition-colors"
+                >
+                  <a href="#servicios">Servicio Express</a>
+                </span>
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-lg mb-4">Contacto</h4>
+            <div class="space-y-3 text-gray-300">
+              <div class="flex items-center">
+                <i class="fa-solid fa-phone text-accent-orange mr-3"></i>
+                <a href="tel:+524427814127">+52 442 781 4127</a>
+              </div>
+              <div class="flex items-center">
+                <i class="fa-solid fa-envelope text-accent-orange mr-3"></i>
+                <span>a.cruz@fcjlogistica.com</span>
+              </div>
+              <div class="flex items-start">
+                <i
+                  class="fa-solid fa-location-dot text-accent-orange mr-3 mt-1"
+                ></i>
+                <span
+                  >Av. Industrias 123, Col. Industrial<br />Querétaro, Qro.
+                  76120</span
+                >
+              </div>
+              <div class="flex items-center">
+                <i class="fa-solid fa-clock text-accent-orange mr-3"></i>
+                <span>24/7 Disponible</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 pt-6">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm"
+          >
+            <p>&copy; 2024 Fcj. Todos los derechos reservados.</p>
+            <div class="flex space-x-4 mt-2 md:mt-0">
+              <span
+                class="hover:text-accent-orange cursor-pointer transition-colors"
+                >Aviso de Privacidad</span
+              >
+              <span
+                class="hover:text-accent-orange cursor-pointer transition-colors"
+                >Términos y Condiciones</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuClose = document.getElementById("mobile-menu-close");
+        const menuIcon = document.getElementById("menu-icon");
+        const body = document.body;
+
+        let isMenuOpen = false;
+
+        mobileMenuButton.addEventListener("click", function () {
+          if (isMenuOpen) {
+            // Close menu
+            mobileMenu.classList.add("hidden");
+            setTimeout(() => {
+              mobileMenu.classList.remove("translate-y-0");
+              mobileMenu.classList.add("-translate-y-full");
+            }, 300);
+            menuIcon.classList.remove("rotate-90");
+            menuIcon.classList.add("rotate-0");
+            menuIcon.className =
+              "fa-solid fa-bars text-2xl transition-transform";
+            body.classList.remove("menu-open");
+            document.documentElement.style.overflow = "";
+            isMenuOpen = false;
+          } else {
+            // Open menu
+            mobileMenu.classList.remove("hidden");
+            mobileMenu.classList.remove("-translate-y-full");
+            mobileMenu.classList.add("translate-y-0");
+            menuIcon.classList.remove("rotate-0");
+            menuIcon.classList.add("rotate-90");
+            menuIcon.className =
+              "fa-solid fa-xmark text-2xl transition-transform";
+            body.classList.add("menu-open");
+            document.documentElement.style.overflow = "hidden";
+            isMenuOpen = true;
+          }
+        });
+
+        // Close menu when clicking the X button
+        mobileMenuClose.addEventListener("click", function () {
+          mobileMenu.classList.add("hidden");
+          setTimeout(() => {
+            mobileMenu.classList.remove("translate-y-0");
+            mobileMenu.classList.add("-translate-y-full");
+          }, 300);
+          menuIcon.classList.remove("rotate-90");
+          menuIcon.classList.add("rotate-0");
+          menuIcon.className = "fa-solid fa-bars text-2xl transition-transform";
+          body.classList.remove("menu-open");
+          document.documentElement.style.overflow = "";
+          isMenuOpen = false;
+        });
+
+        // Close menu when clicking on menu items
+        const menuItems = mobileMenu.querySelectorAll("span, a");
+        menuItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            mobileMenu.classList.add("hidden");
+            setTimeout(() => {
+              mobileMenu.classList.remove("translate-y-0");
+              mobileMenu.classList.add("-translate-y-full");
+            }, 300);
+            menuIcon.classList.remove("rotate-90");
+            menuIcon.classList.add("rotate-0");
+            menuIcon.className =
+              "fa-solid fa-bars text-2xl transition-transform";
+            body.classList.remove("menu-open");
+            document.documentElement.style.overflow = "";
+            isMenuOpen = false;
+          });
+        });
+
+        // Close menu when pressing Escape key
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && isMenuOpen) {
+            mobileMenu.classList.add("hidden");
+            setTimeout(() => {
+              mobileMenu.classList.remove("translate-y-0");
+              mobileMenu.classList.add("-translate-y-full");
+            }, 300);
+            menuIcon.classList.remove("rotate-90");
+            menuIcon.classList.add("rotate-0");
+            menuIcon.className =
+              "fa-solid fa-bars text-2xl transition-transform";
+            body.classList.remove("menu-open");
+            document.documentElement.style.overflow = "";
+            isMenuOpen = false;
+          }
+        });
+
+        // Close menu when window is resized to desktop size
+        window.addEventListener("resize", function () {
+          if (window.innerWidth >= 768 && isMenuOpen) {
+            mobileMenu.classList.add("hidden");
+            setTimeout(() => {
+              mobileMenu.classList.remove("translate-y-0");
+              mobileMenu.classList.add("-translate-y-full");
+            }, 300);
+            menuIcon.classList.remove("rotate-90");
+            menuIcon.classList.add("rotate-0");
+            menuIcon.className =
+              "fa-solid fa-bars text-2xl transition-transform";
+            body.classList.remove("menu-open");
+            document.documentElement.style.overflow = "";
+            isMenuOpen = false;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
